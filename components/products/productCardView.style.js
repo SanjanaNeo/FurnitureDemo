@@ -7,6 +7,8 @@ const styles = StyleSheet.create({
         height:180,
         borderRadius:SIZES.medium,
         backgroundColor:COLORS.secondary,
+        // marginHorizontal:'5%'
+        
     },
     imageContainer:{
         flex:1,
@@ -15,6 +17,7 @@ const styles = StyleSheet.create({
         marginTop:SIZES.small/2,
         borderRadius:SIZES.small,
         overflow:"hidden",
+
     },
     image:{
         aspectRatio:1,

@@ -1,10 +1,13 @@
 import { Text, View, TouchableOpacity,Image} from 'react-native'
 import React,{useState} from 'react'
 import styles from './productDetails.style'
+import { useRoute } from '@react-navigation/native'
 import {Ionicons, SimpleLineIcons,MaterialCommunityIcons,Fontisto} from '@expo/vector-icons'
 import { COLORS, SIZES } from '../constants'
 
 const ProductDetails = ({navigation}) => {
+  const route=useRoute()
+  const {item} = route.params
   const [count,setCount] = useState(1)
 
   const increment=()=>{
@@ -29,14 +32,14 @@ const ProductDetails = ({navigation}) => {
             </TouchableOpacity>
         </View>
       <Image 
-      source={{uri:"https://d326fntlu7tb1e.cloudfront.net/uploads/cb2e64a8-ad4c-4d45-b58b-b0c7e11b6bb4-fn1.jpg"}}
+      source={{uri:item.imageUrl}}
       style={styles.image}
       />
       <View style={styles.details}>
         <View style={styles.titleRow}>
-          <Text style={styles.title}>Product</Text>
+          <Text style={styles.title}>{item.title}</Text>
           <View style={styles.priceWrapper}>
-          <Text style={styles.price}>$666.86</Text>
+          <Text style={styles.price}>{item.price}</Text>
           </View>
         </View>
         <View style={styles.ratingRow}>
