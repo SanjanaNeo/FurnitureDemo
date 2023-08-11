@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import {COLORS,SIZES} from '../constants'
+import { Colors } from "react-native/Libraries/NewAppScreen";
 
 const styles = StyleSheet.create({
     container:{
@@ -8,7 +9,7 @@ const styles = StyleSheet.create({
     },
     upperRow:{
         marginHorizontal:20,
-        marginTop:-30,
+        // marginTop:-30,
         flexDirection:'row',
         justifyContent:'space-between',
         alignItems:'center',
@@ -30,13 +31,13 @@ const styles = StyleSheet.create({
         borderTopRightRadius:SIZES.medium
     },
     titleRow:{
-        marginHorizontal:10,
+        marginHorizontal:20,
         paddingBottom:SIZES.small,
         flexDirection:'row',
         justifyContent:'space-between',
         alignItems:'center',
-        width:SIZES.width-20,
-        top:10
+        width:SIZES.width-44,
+        top:20
     },
     ratingRow:{
         marginHorizontal:10,
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
         color:COLORS.gray,
         fontFamily:"medium",
         marginHorizontal:3,
-        paddingHorizontal:5
+        paddingHorizontal:SIZES.xSmall
     },
     descriptionWrapper:{
         marginTop:SIZES.large*2-20,
@@ -94,6 +95,39 @@ const styles = StyleSheet.create({
         backgroundColor:COLORS.secondary,
         padding:5,
         borderRadius:SIZES.large,
+        marginHorizontal:SIZES.large - 4,
+        marginVertical:20
+    },
+    cartRow:{
+        paddingBottom:SIZES.small,
+        flexDirection:'row',
+        justifyContent:'space-between',
+        alignItems:'center',
+        width:SIZES.width,
+        marginHorizontal:SIZES.large - 20,
+        marginVertical:-12
+    },
+    cartBtn:{
+        width:SIZES.width*0.7,
+        backgroundColor:COLORS.black,
+        padding:SIZES.small/2,
+        borderRadius:SIZES.large,
+        marginLeft:12
+    },
+    cartTitle:{
+        marginLeft:SIZES.small,
+        fontFamily:'bold',
+        fontSize:SIZES.medium,
+        color:COLORS.lightWhite
+    },
+    addCart:{
+        width:37,
+        height:37,
+        borderRadius:50,
+        margin:SIZES.small,
+        backgroundColor:COLORS.black,
+        alignItems:'center',
+        justifyContent:'center'
     }
 })
 
