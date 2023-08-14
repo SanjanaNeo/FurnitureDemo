@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     },
     upperRow:{
         marginHorizontal:20,
-        // marginTop:-30,
+        marginTop:-30,
         flexDirection:'row',
         justifyContent:'space-between',
         alignItems:'center',
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         resizeMode:'cover'
     },
     details:{
-        marginTop:-SIZES.large,
+        marginTop:-SIZES.xxLarge + 5,
         backgroundColor:COLORS.lightWhite,
         width:SIZES.width,
         borderTopLeftRadius:SIZES.medium,
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
         paddingHorizontal:SIZES.xSmall
     },
     descriptionWrapper:{
-        marginTop:SIZES.large*2-20,
+        marginTop:SIZES.large*2-40,
         marginHorizontal:SIZES.large,
         marginBottom:-25
     },
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
         alignItems:'center',
         width:SIZES.width,
         marginHorizontal:SIZES.large - 20,
-        marginVertical:-12
+        marginVertical:-25
     },
     cartBtn:{
         width:SIZES.width*0.7,

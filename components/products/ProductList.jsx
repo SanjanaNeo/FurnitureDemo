@@ -22,7 +22,7 @@ const ProductList = () => {
             <FlatList
                 data={data}
                 numColumns={2}
-                renderItem={({item})=>(<ProductCardView item={item} style={{marginHorizontal:'10%'}}/>)}
+                renderItem={({item})=>(<ProductCardView item={item} style={{marginHorizontal:'6%'}}/>)}
                 contentContainerStyle={[styles.container,{}]}
                 ItemSeparatorComponent={()=><View style={styles.separator}/>}
             />            
