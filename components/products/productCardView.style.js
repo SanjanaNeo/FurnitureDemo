@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     },
     title:{
         fontFamily:'bold',
-        fontSize:SIZES.large,
+        fontSize:SIZES.medium,
         marginBottom:-8,
         marginTop:-15
     },

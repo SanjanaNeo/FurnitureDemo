@@ -4,7 +4,7 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen'
 import { useCallback } from 'react';
 import BottomTabNavigation from './navigation/BottomTabNavigation';
-import { Cart, ProductDetails, NewArrivals,LoginPage } from './screens';
+import { Cart, ProductDetails, NewArrivals, LoginPage, Orders, Favorites, Signup } from './screens';
 
 const Stack = createNativeStackNavigator()
 
@@ -18,50 +18,67 @@ export default function App() {
     semibold: require("./assets/fonts/Poppins-SemiBold.ttf")
   })
 
-  const onLayoutRootView = useCallback(async()=>{
-    if(fontsLoaded){
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
       await SplashScreen.hideAsync()
     }
-  },[fontsLoaded])
+  }, [fontsLoaded])
 
-  if(!fontsLoaded){
+  if (!fontsLoaded) {
     return null;
   }
 
 
   return (
-   <NavigationContainer>
-    <Stack.Navigator>
-    <Stack.Screen
-    name='Bottom Navigation'
-    component={BottomTabNavigation}
-    options={{headerShown: false}}
-    />
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name='Bottom Navigation'
+          component={BottomTabNavigation}
+          options={{ headerShown: false }}
+        />
 
- <Stack.Screen
-    name='Cart'
-    component={Cart}
-    options={{headerShown: false}}
-    />
+        <Stack.Screen
+          name='Cart'
+          component={Cart}
+          options={{ headerShown: false }}
+        />
 
-<Stack.Screen
-    name='ProductDetails'
-    component={ProductDetails}
-    options={{headerShown: false}}
-    />
+        <Stack.Screen
+          name='ProductDetails'
+          component={ProductDetails}
+          options={{ headerShown: false }}
+        />
 
-<Stack.Screen
-    name='ProductList'
-    component={NewArrivals}
-    options={{headerShown: false}}
-    />
+        <Stack.Screen
+          name='ProductList'
+          component={NewArrivals}
+          options={{ headerShown: false }}
+        />
 
-<Stack.Screen
-    name='Login'
-    component={LoginPage}
-    options={{headerShown: false}}
-    />
-    </Stack.Navigator>
-   </NavigationContainer>
+        <Stack.Screen
+          name='Login'
+          component={LoginPage}
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
+          name='Orders'
+          component={Orders}
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
+          name='Favorites'
+          component={Favorites}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name='Signup'
+          component={Signup}
+          options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
