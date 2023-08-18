@@ -5,11 +5,14 @@ import { Ionicons } from '@expo/vector-icons'
 import styles from './cart.style'
 import { COLORS, SIZES } from '../constants'
 import fetchCart from '../hook/fetchCart'
-import { cartTile } from '../components'
+import { CartTitle } from '../components'
 
 const Cart = ({ navigation }) => {
   const [data, setData] = useState([]);
   const { loader, error, refetch } = fetchCart(setData)
+  const [selected,setSelected] = useState(null)
+  const [select,setSelect] = useState(false)
+
   // Handle different loading states
   if (loader) {
     return (
@@ -53,7 +56,11 @@ const Cart = ({ navigation }) => {
       <FlatList
         data={data}
         keyExtractor={(item) => item._id}
-        renderItem={({ item }) => <Text>{item.cartItem.title}</Text>}
+        renderItem={({ item }) => <CartTitle 
+        item={item} 
+        onPress={()=>{setSelect(!select),setSelected(item)}} 
+        select={select}
+        />}
       />
     </SafeAreaView>
   )

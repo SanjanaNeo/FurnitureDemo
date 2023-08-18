@@ -19,7 +19,7 @@ const styles=StyleSheet.create({
         letterSpacing:4,
         marginLeft:SIZES.small
     },
-    favContainer:{
+    favContainer:(color)=>({
         flex:1,
         justifyContent:'flex-start',
         alignItems:'center',
@@ -27,10 +27,10 @@ const styles=StyleSheet.create({
         marginBottom:SIZES.xSmall,
         padding:SIZES.medium,
         borderRadius:SIZES.small,
-        backgroundColor:"#FFF",
+        backgroundColor:color,
         // ...SHADOWS.medium,
         shadowColor:COLORS.secondary
-    },
+    }),
     imageContainer:{
         width:70,
         borderRadius:SIZES.medium,
