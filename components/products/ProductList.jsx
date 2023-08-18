@@ -7,7 +7,7 @@ import ProductCardView from './ProductCardView'
 
 const ProductList = () => {
     const { data, isLoading, error } = useFetch(Platform.OS);
-    console.log("testing",data);
+    // console.log("testing",data);
 
 
     if (isLoading) {

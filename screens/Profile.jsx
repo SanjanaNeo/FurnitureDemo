@@ -152,7 +152,7 @@ const Profile = ({ navigation }) => {
                 </View>
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={() => navigation.navigate("Orders")}>
+              <TouchableOpacity onPress={() => navigation.navigate("Cart")}>
                 <View style={styles.menuItem(0.2)}>
                   <SimpleLineIcons
                     name="bag"
