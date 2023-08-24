@@ -8,6 +8,7 @@ import LoginPage from "./LoginPage";
 import Orders from "./Orders";
 import Favorites from "./Favorites";
 import Signup from "./Signup";
+import PaymentPage from "./PaymentPage";
 
 export{
     Home,
@@ -19,5 +20,6 @@ export{
     LoginPage,
     Orders,
     Favorites,
-    Signup
+    Signup,
+    PaymentPage
 }

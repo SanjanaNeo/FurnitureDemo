@@ -1,10 +1,11 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React, { useRef } from 'react'
-import styles from '../../screens/cart.style'
+// import styles from '../../screens/cart.style'
+import styles from '../screens/cart.style'
 import {AntDesign} from '@expo/vector-icons'
-import { COLORS } from '../../constants'
+import { COLORS } from '../constants'
 
-const CartTitle = ({item,onPress,select,deleteCart}) => {
+const OrdersTile = ({item}) => {
     const handleDeleteCartItem = async () => {
         try {
             await deleteCart(item?._id);
@@ -14,7 +15,7 @@ const CartTitle = ({item,onPress,select,deleteCart}) => {
         }
     };
   return (
-   <TouchableOpacity style={styles.favContainer(select === false ? "#FFF" : COLORS.secondary)} onPress={onPress}>
+   <TouchableOpacity style={styles.favContainer(COLORS.secondary)}>
     <View style={styles.imageContainer}>
         <Image
             source={{uri:item.cartItem.imageUrl}}
@@ -30,14 +31,12 @@ const CartTitle = ({item,onPress,select,deleteCart}) => {
     style={{paddingBottom:20,paddingLeft:75}}
     onPress={handleDeleteCartItem}
     >
-    <AntDesign
-    name='delete'
-    size={18}
-    color={COLORS.red}
-    />
+    <View>
+
+    </View>
     </TouchableOpacity>
    </TouchableOpacity>
   )
 }
 
-export default CartTitle
+export default OrdersTile

@@ -1,4 +1,4 @@
-import { Text, View, TouchableOpacity, Image } from 'react-native'
+import { Text, View, TouchableOpacity, Image, Alert } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import styles from './productDetails.style'
 import { useRoute } from '@react-navigation/native'
@@ -6,6 +6,8 @@ import { Ionicons, SimpleLineIcons, MaterialCommunityIcons, Fontisto } from '@ex
 import { COLORS, SIZES } from '../constants'
 import AddToCart from '../hook/AddToCart'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import WebView from 'react-native-webview'
 
 const ProductDetails = ({ navigation }) => {
   const route = useRoute()
@@ -13,6 +15,8 @@ const ProductDetails = ({ navigation }) => {
   const [count, setCount] = useState(1)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [favorites, setFavorites] = useState(false)
+  const [paymentUrl, setpaymentUrl] = useState(false)
+
 
 
   const increment = () => {
@@ -45,6 +49,29 @@ const ProductDetails = ({ navigation }) => {
     }
   }
 
+  // const createCheckOut = async() =>{
+  //   const id =await AsyncStorage.getItem('id');
+  //   const response = await fetch("https://stripeserver-production-0bac.up.railway.app/stripe/create-checkout-session",{
+  //     method:'POST',
+  //     headers:{
+  //       'Content-type':'application/json'
+  //     },
+  //     body:JSON.stringify({
+  //       userId:JSON.parse(id),
+  //       cartItems:[
+  //         {
+  //           name:item.title,
+  //           id:item._id,
+  //           price:item.price,
+  //           cartQuantity:count
+  //         }
+  //       ]
+  //     })
+  //   })
+  //   const {url} = await response.json()
+  //   setpaymentUrl(url)
+  // }
+
   const handlePress = () => {
     if (isLoggedIn === false) {
       navigation.navigate('Login')
@@ -59,9 +86,37 @@ const ProductDetails = ({ navigation }) => {
       navigation.navigate('Login')
     }
     else {
-      console.log("buy")
+    //  createCheckOut()
+    navigation.navigate('PaymentPage', { orderedItem: item, orderedItems: [] });
     }
   }
+
+  // const onNavigationStateChange = (webViewState) =>{
+  //   const {url} =webViewState
+  //   if(url && url.include('checkout-success')){
+  //     navigation.navigate("Orders")
+  //   }else if(url && url.include('cancel')){
+  //     navigation.goBack()
+  //   }
+  // }
+
+  //Above is the original code
+  // Inside your ProductDetails component's onNavigationStateChange function
+// const onNavigationStateChange = (webViewState) => {
+//   const { url } = webViewState;
+//   if (url && url.includes('checkout-success')) {
+//     const orderedItem = {
+//       id: item._id,
+//       title: item.title,
+//       price: item.price,
+//       imageUrl: item.imageUrl,
+//     };
+//     navigation.navigate('Orders', { orderedItems: [orderedItem] });
+//   } else if (url && url.includes('cancel')) {
+//     navigation.goBack();
+//   }
+// };
+
 
   const handleCart = () => {
     if (isLoggedIn === false) {
@@ -125,7 +180,16 @@ const ProductDetails = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.upperRow}>
+     {paymentUrl ? (
+      <SafeAreaView>
+        <WebView
+          source={{uri:paymentUrl}}
+          onNavigationStateChange={onNavigationStateChange}
+        />
+      </SafeAreaView>
+     ):(
+      <View style={styles.container}>
+         <View style={styles.upperRow}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Ionicons name='chevron-back-circle' size={30} />
         </TouchableOpacity>
@@ -134,6 +198,7 @@ const ProductDetails = ({ navigation }) => {
           <Ionicons name={favorites ? 'heart' : 'heart-outline'} size={30} color={COLORS.primary} />
         </TouchableOpacity>
       </View>
+      
       <Image
         source={{ uri: item.imageUrl }}
         style={styles.image}
@@ -204,6 +269,8 @@ const ProductDetails = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </View>
+      </View>
+     )}
     </View>
   )
 }

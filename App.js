@@ -2,13 +2,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen'
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import BottomTabNavigation from './navigation/BottomTabNavigation';
-import { Cart, ProductDetails, NewArrivals, LoginPage, Orders, Favorites, Signup } from './screens';
+import { Cart, ProductDetails, NewArrivals, LoginPage, Orders, Favorites, Signup, PaymentPage } from './screens';
 
 const Stack = createNativeStackNavigator()
 
 export default function App() {
+  // const [orderedItems, setOrderedItems] = useState([]);
 
   const [fontsLoaded] = useFonts({
     regular: require("./assets/fonts/Poppins-Regular.ttf"),
@@ -66,6 +67,7 @@ export default function App() {
           name='Orders'
           component={Orders}
           options={{ headerShown: false }}
+          // initialParams={{ orderedItems }}
         />
 
         <Stack.Screen
@@ -76,6 +78,11 @@ export default function App() {
         <Stack.Screen
           name='Signup'
           component={Signup}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name='PaymentPage'
+          component={PaymentPage}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
