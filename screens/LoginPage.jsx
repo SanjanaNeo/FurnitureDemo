@@ -38,17 +38,16 @@ const LoginPage = ({ navigation }) => {
 
   const login = async (values) => {
     setLoader(true)
-    try {
+     try {
       const endpoint = "http://10.0.2.2:3005/api/login"
       const data = values;
       const response = await axios.post(endpoint, data)
       if (response.status === 200) {
         setLoader(false)
         setResposneData(response.data)
-        // console.log(`user${responseData._id}`)
-        await AsyncStorage.setItem(`user${responseData._id}`,JSON.stringify(responseData))
-        await AsyncStorage.setItem("id",JSON.stringify(responseData._id))
-        await AsyncStorage.setItem("token",JSON.stringify(responseData.token))
+        await AsyncStorage.setItem(`user${response.data._id}`,JSON.stringify(response.data))
+        await AsyncStorage.setItem("id",JSON.stringify(response.data._id))
+        await AsyncStorage.setItem("token",JSON.stringify(response.data.token))
         navigation.replace('Bottom Navigation')
 
       } else {
