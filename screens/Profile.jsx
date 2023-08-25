@@ -44,6 +44,18 @@ const Profile = ({ navigation }) => {
     }
   }
 
+  const cacheClear = async () => {
+    const id = await AsyncStorage.getItem('id')
+    const userId = `favorites${JSON.parse(id)}`
+    try {
+      await AsyncStorage.removeItem(userId)
+      navigation.replace('Bottom Navigation')
+
+    } catch (error) {
+      console.log("Error logging out the user", error)
+    }
+  }
+
   const logout = () => {
     Alert.alert(
       "Logout",
@@ -70,10 +82,10 @@ const Profile = ({ navigation }) => {
           text: "Cancel", onPress: () => console.log("cancel clear cache")
         },
         {
-          text: "Continue", onPress: () => console.log("clear cache pressed")
+          text: "Continue", onPress: () => cacheClear()
 
         },
-        { defaultIndex: 1 }
+        //{ defaultIndex: 1 }
       ]
     )
   }
