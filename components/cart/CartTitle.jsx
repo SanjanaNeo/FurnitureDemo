@@ -14,7 +14,7 @@ const CartTitle = ({item,onPress,select,deleteCart}) => {
         }
     };
   return (
-   <TouchableOpacity style={styles.favContainer(select === false ? "#FFF" : COLORS.secondary)} onPress={onPress}>
+   <TouchableOpacity style={styles.favContainer(!select ? "#FFF" : COLORS.secondary)} onPress={onPress}>
     <View style={styles.imageContainer}>
         <Image
             source={{uri:item.cartItem.imageUrl}}

@@ -125,6 +125,7 @@ const ProductDetails = ({ navigation }) => {
     else {
       // console.log("hello");
       AddToCart(item._id, count)
+      Alert.alert("Product added to the cart successfully !!!")
     }
   }
 

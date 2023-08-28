@@ -58,18 +58,25 @@ const Orders = () => {
       setOrderedItems(parsedOrderedItems);
     }
   };
-  console.log('orderedItems in Orders:', orderedItems);
-  const renderItem = ({ item }) => (
-    <View style={styles.favContainer(item.backgroundColor)}>
-    <View style={styles.imageContainer}>
-      <Image source={{ uri: item.imageUrl }} style={styles.image} />
-    </View>
-    <View style={styles.textContainer}>
-      <Text style={styles.productTxt}>{item.title}</Text>
-      <Text style={styles.supplier}>{item.supplier}</Text>
+  const renderItem = ({ item }) => {
+    console.log("testing----->")
+    console.log('orderedItems in Orders:--------->', item.cartItem === undefined ? item : item.cartItem );
+
+
+
+    return (
+
+      <View style={styles.favContainer(item.backgroundColor)}>
+        <View style={styles.imageContainer}>
+          <Image source={{ uri: item.cartItem === undefined ? item.imageUrl : item.cartItem.imageUrl }} style={styles.image} />
+        </View>
+        <View style={styles.textContainer}>
+          <Text style={styles.productTxt}>{ item.cartItem === undefined ? item.title : item.cartItem.title}</Text>
+          <Text style={styles.supplier}>{item.cartItem === undefined ? item.supplier : item.cartItem.supplier}</Text>
+        </View>
       </View>
-    </View>
-  );
+    )
+  };
 
   return (
     <View style={styles.container}>
@@ -84,42 +91,4 @@ const Orders = () => {
     </View>
   );
 };
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: COLORS.white,
-//     padding: SIZES.padding,
-//   },
-//   title: {
-//     fontSize: 24,
-//     fontWeight: 'bold',
-//     marginBottom: SIZES.padding,
-//   },
-//   orderList: {
-//     flexGrow: 1,
-//   },
-//   orderItem: {
-//     flexDirection: 'row',
-//     alignItems: 'center',
-//     marginBottom: SIZES.base,
-//   },
-//   image: {
-//     width: 80,
-//     height: 80,
-//     borderRadius: SIZES.radius,
-//   },
-//   orderDetails: {
-//     marginLeft: SIZES.base,
-//   },
-//   productTitle: {
-//     fontSize: 16,
-//     fontWeight: 'bold',
-//   },
-//   productPrice: {
-//     fontSize: 14,
-//     color: COLORS.gray,
-//   },
-// });
-
 export default Orders;
