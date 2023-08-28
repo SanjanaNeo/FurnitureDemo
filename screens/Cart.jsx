@@ -80,7 +80,7 @@ const Cart = ({ navigation }) => {
               }
             }}
             select={selected === item} // Check if the item is selected
-            deleteCart={deleteCart}
+            deleteCart={handleDeleteCartItem}
           />
         )}
       />
